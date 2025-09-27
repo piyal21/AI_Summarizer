@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 # 🧑‍⚖️ Legal AI Summarizer
+=======
+# AI Summarizer [ Q & A ]
+>>>>>>> ff0791483c256444b2d3f64ca6732127346b190d
 
 > A modern platform to simplify legal documents for everyone. Upload, summarize, and interact with your legal files using advanced AI.
 
@@ -105,6 +109,10 @@ Pull requests and suggestions are welcome! For major changes, please open an iss
 
 ---
 
+<<<<<<< HEAD
 ## 📄 License
 
 This project is licensed under the MIT License.
+=======
+.
+>>>>>>> ff0791483c256444b2d3f64ca6732127346b190d
