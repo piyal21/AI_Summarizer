@@ -1,4 +1,4 @@
-#  Legal AI Summarizer
+# AI Summarizer [ Q & A ]
 
 > A modern platform to simplify legal documents for everyone. Upload, summarize, and interact with your legal files using advanced AI.
 
