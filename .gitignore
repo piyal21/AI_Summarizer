@@ -1,61 +1,30 @@
-# Python virtual environment
-venv/
-env/
-ENV/
-
-# Python byte-compiled files
+# Python
 __pycache__/
 *.py[cod]
-*$py.class
-
-# Distribution / packaging
-dist/
-build/
-*.egg-info/
-
-# Jupyter Notebook
-.ipynb_checkpoints
-
-# VS Code settings
-.vscode/
-*.code-workspace
-
-# Environment variables
+*.pyo
+*.pyd
+*.env
+venv/
 .env
+.env.*
 
-# Vector database files
-chroma_db/
-vector_db.pkl
+# Streamlit
+.streamlit/
 
-# PDF files (comment out if you want to include PDF files in version control)
-# PDF Files/*.pdf
+# Data
+/data/uploads/
+/data/vector_dbs/
+
+# VS Code
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
 
 # Logs
 *.log
 
-# Local development settings
-instance/
-.webassets-cache
-
-# Coverage reports
-htmlcov/
-.coverage
-.coverage.*
-coverage.xml
-*.cover
-
-# PyCharm
-.idea/
-
-# macOS system files
-.DS_Store
-
-# Windows system files
-Thumbs.db
-ehthumbs.db
-Desktop.ini
-
-# Database files
-*.db
-*.sqlite
+# Misc
 *.sqlite3
+*.db

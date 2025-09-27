@@ -1,6 +1,9 @@
-langchain==0.0.330
-PyPDF2==3.0.1
-python-dotenv==1.0.0
-sentence-transformers==2.2.2
-chromadb==0.4.13
-tqdm==4.66.1
+streamlit
+openai
+python-dotenv
+faiss-cpu
+langchain
+PyPDF2
+python-docx
+sentence-transformers
+chromadb
