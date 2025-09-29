@@ -14,7 +14,7 @@
 - **Chat with Your Document:** Ask questions and get relevant answers using RAG + OpenAI LLM
 - **Classy Streamlit UI:** Modern, attractive, and easy to use
 - **Short-Term Chat Memory:** Access your last 10 Q&A (hidden in UI for privacy)
-- **Semantic Vector Database:** Store and retrieve document meaning with FAISS/Chroma
+- **Semantic Vector Database:** Store and retrieve document meaning with FAISS
 
 ---
 
