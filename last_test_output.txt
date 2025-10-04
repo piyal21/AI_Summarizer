@@ -1,0 +1,200 @@
+============================= test session starts =============================
+platform win32 -- Python 3.12.10, pytest-8.4.2, pluggy-1.6.0 -- E:\AI\Projects\Legal_AI_Summarizer\venv\Scripts\python.exe
+cachedir: .pytest_cache
+rootdir: E:\AI\Projects\Legal_AI_Summarizer
+configfile: pytest.ini
+plugins: anyio-4.11.0, langsmith-0.4.32, cov-7.0.0
+collecting ... collected 7 items
+
+tests/test_chat.py::test_answer_query FAILED                             [ 14%]
+tests/test_chat.py::test_chat_history FAILED                             [ 28%]
+tests/test_document_processing.py::test_generate_summary FAILED          [ 42%]
+tests/test_document_processing.py::test_extract_highlights FAILED        [ 57%]
+tests/test_file_handler.py::test_handle_upload_pdf FAILED                [ 71%]
+tests/test_file_handler.py::test_handle_upload_doc FAILED                [ 85%]
+tests/test_file_handler.py::test_handle_upload_invalid FAILED            [100%]
+
+================================== FAILURES ===================================
+______________________________ test_answer_query ______________________________
+tests\test_chat.py:12: in test_answer_query
+    answer = answer_query(test_doc, query)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app\rag_pipeline.py:10: in answer_query
+    create_vector_db(chunks, db_name)
+app\utils\vector_store.py:13: in create_vector_db
+    db = FAISS.from_texts(chunks, embeddings)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+venv\Lib\site-packages\langchain_community\vectorstores\faiss.py:1043: in from_texts
+    embeddings = embedding.embed_documents(texts)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+venv\Lib\site-packages\langchain_community\embeddings\openai.py:671: in embed_documents
+    return self._get_len_safe_embeddings(
+venv\Lib\site-packages\langchain_community\embeddings\openai.py:497: in _get_len_safe_embeddings
+    response = embed_with_retry(
+venv\Lib\site-packages\langchain_community\embeddings\openai.py:120: in embed_with_retry
+    return embeddings.client.create(**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+venv\Lib\site-packages\openai\resources\embeddings.py:132: in create
+    return self._post(
+venv\Lib\site-packages\openai\_base_client.py:1259: in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+venv\Lib\site-packages\openai\_base_client.py:1047: in request
+    raise self._make_status_error_from_response(err.response) from None
+E   openai.AuthenticationError: Error code: 401 - {'error': {'message': 'Incorrect API key provided: your-api*****here. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+______________________________ test_chat_history ______________________________
+tests\test_chat.py:29: in test_chat_history
+    assert latest["query"] == query
+           ^^^^^^^^^^^^^^^
+E   TypeError: tuple indices must be integers or slices, not str
+____________________________ test_generate_summary ____________________________
+tests\test_document_processing.py:15: in test_generate_summary
+    summary = generate_summary(test_text)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app\utils\summarizer.py:8: in generate_summary
+    response = client.chat.completions.create(
+venv\Lib\site-packages\openai\_utils\_utils.py:286: in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+venv\Lib\site-packages\openai\resources\chat\completions\completions.py:1147: in create
+    return self._post(
+venv\Lib\site-packages\openai\_base_client.py:1259: in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+venv\Lib\site-packages\openai\_base_client.py:1047: in request
+    raise self._make_status_error_from_response(err.response) from None
+E   openai.AuthenticationError: Error code: 401 - {'error': {'message': 'Incorrect API key provided: your-api*****here. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+___________________________ test_extract_highlights ___________________________
+tests\test_document_processing.py:25: in test_extract_highlights
+    highlights = extract_highlights(test_text)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app\utils\highlight.py:8: in extract_highlights
+    response = client.chat.completions.create(
+venv\Lib\site-packages\openai\_utils\_utils.py:286: in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+venv\Lib\site-packages\openai\resources\chat\completions\completions.py:1147: in create
+    return self._post(
+venv\Lib\site-packages\openai\_base_client.py:1259: in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+venv\Lib\site-packages\openai\_base_client.py:1047: in request
+    raise self._make_status_error_from_response(err.response) from None
+E   openai.AuthenticationError: Error code: 401 - {'error': {'message': 'Incorrect API key provided: your-api*****here. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+___________________________ test_handle_upload_pdf ____________________________
+tests\test_file_handler.py:14: in test_handle_upload_pdf
+    text = handle_upload(f)
+           ^^^^^^^^^^^^^^^^
+app\utils\file_handler.py:8: in handle_upload
+    reader = PyPDF2.PdfReader(uploaded_file)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+venv\Lib\site-packages\PyPDF2\_reader.py:319: in __init__
+    self.read(stream)
+venv\Lib\site-packages\PyPDF2\_reader.py:1415: in read
+    self._find_eof_marker(stream)
+venv\Lib\site-packages\PyPDF2\_reader.py:1471: in _find_eof_marker
+    raise PdfReadError("EOF marker not found")
+E   PyPDF2.errors.PdfReadError: EOF marker not found
+___________________________ test_handle_upload_doc ____________________________
+tests\test_file_handler.py:25: in test_handle_upload_doc
+    text = handle_upload(f)
+           ^^^^^^^^^^^^^^^^
+app\utils\file_handler.py:11: in handle_upload
+    doc = Document(uploaded_file)
+          ^^^^^^^^^^^^^^^^^^^^^^^
+venv\Lib\site-packages\docx\api.py:27: in Document
+    document_part = cast("DocumentPart", Package.open(docx).main_document_part)
+                                         ^^^^^^^^^^^^^^^^^^
+venv\Lib\site-packages\docx\opc\package.py:126: in open
+    pkg_reader = PackageReader.from_file(pkg_file)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+venv\Lib\site-packages\docx\opc\pkgreader.py:22: in from_file
+    phys_reader = PhysPkgReader(pkg_file)
+                  ^^^^^^^^^^^^^^^^^^^^^^^
+venv\Lib\site-packages\docx\opc\phys_pkg.py:76: in __init__
+    self._zipf = ZipFile(pkg_file, "r")
+                 ^^^^^^^^^^^^^^^^^^^^^^
+C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\Lib\zipfile\__init__.py:1354: in __init__
+    self._RealGetContents()
+C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\Lib\zipfile\__init__.py:1421: in _RealGetContents
+    raise BadZipFile("File is not a zip file")
+E   zipfile.BadZipFile: File is not a zip file
+_________________________ test_handle_upload_invalid __________________________
+tests\test_file_handler.py:31: in test_handle_upload_invalid
+    handle_upload(None)
+app\utils\file_handler.py:6: in handle_upload
+    ext = uploaded_file.name.split('.')[-1].lower()
+          ^^^^^^^^^^^^^^^^^^
+E   AttributeError: 'NoneType' object has no attribute 'name'
+============================== warnings summary ===============================
+app\utils\vector_store.py:2
+  E:\AI\Projects\Legal_AI_Summarizer\app\utils\vector_store.py:2: LangChainDeprecationWarning: Importing FAISS from langchain.vectorstores is deprecated. Please replace deprecated imports:
+  
+  >> from langchain.vectorstores import FAISS
+  
+  with new imports of:
+  
+  >> from langchain_community.vectorstores import FAISS
+  You can use the langchain cli to **automatically** upgrade many imports. Please see documentation here <https://python.langchain.com/docs/versions/v0_2/>
+    from langchain.vectorstores import FAISS, Chroma
+
+app\utils\vector_store.py:2
+  E:\AI\Projects\Legal_AI_Summarizer\app\utils\vector_store.py:2: LangChainDeprecationWarning: Importing Chroma from langchain.vectorstores is deprecated. Please replace deprecated imports:
+  
+  >> from langchain.vectorstores import Chroma
+  
+  with new imports of:
+  
+  >> from langchain_community.vectorstores import Chroma
+  You can use the langchain cli to **automatically** upgrade many imports. Please see documentation here <https://python.langchain.com/docs/versions/v0_2/>
+    from langchain.vectorstores import FAISS, Chroma
+
+app\utils\vector_store.py:3
+  E:\AI\Projects\Legal_AI_Summarizer\app\utils\vector_store.py:3: LangChainDeprecationWarning: Importing OpenAIEmbeddings from langchain.embeddings is deprecated. Please replace deprecated imports:
+  
+  >> from langchain.embeddings import OpenAIEmbeddings
+  
+  with new imports of:
+  
+  >> from langchain_community.embeddings import OpenAIEmbeddings
+  You can use the langchain cli to **automatically** upgrade many imports. Please see documentation here <https://python.langchain.com/docs/versions/v0_2/>
+    from langchain.embeddings import OpenAIEmbeddings
+
+app\utils\vector_store.py:6
+  E:\AI\Projects\Legal_AI_Summarizer\app\utils\vector_store.py:6: LangChainDeprecationWarning: The class `OpenAIEmbeddings` was deprecated in LangChain 0.0.9 and will be removed in 1.0. An updated version of the class exists in the :class:`~langchain-openai package and should be used instead. To use it run `pip install -U :class:`~langchain-openai` and import as `from :class:`~langchain_openai import OpenAIEmbeddings``.
+    embeddings = OpenAIEmbeddings(openai_api_key=OPENAI_API_KEY)
+
+venv\Lib\site-packages\PyPDF2\__init__.py:21
+  E:\AI\Projects\Legal_AI_Summarizer\venv\Lib\site-packages\PyPDF2\__init__.py:21: DeprecationWarning: PyPDF2 is deprecated. Please move to the pypdf library instead.
+    warnings.warn(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=============================== tests coverage ================================
+______________ coverage: platform win32, python 3.12.10-final-0 _______________
+
+Name                         Stmts   Miss  Cover
+------------------------------------------------
+app\__init__.py                  0      0   100%
+app\chat_manager.py              5      0   100%
+app\config.py                    7      0   100%
+app\main.py                     25     25     0%
+app\rag_pipeline.py             13      5    62%
+app\ui_components.py            10     10     0%
+app\utils\__init__.py            0      0   100%
+app\utils\file_handler.py       13      4    69%
+app\utils\highlight.py           7      1    86%
+app\utils\memory.py              7      0   100%
+app\utils\summarizer.py          7      1    86%
+app\utils\text_splitter.py       4      0   100%
+app\utils\vector_store.py       20      9    55%
+------------------------------------------------
+TOTAL                          118     55    53%
+=========================== short test summary info ===========================
+FAILED tests/test_chat.py::test_answer_query - openai.AuthenticationError: Error code: 401 - {'error': {'message': 'Incorrect API key provided: your-api*****here. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+FAILED tests/test_chat.py::test_chat_history - TypeError: tuple indices must be integers or slices, not str
+FAILED tests/test_document_processing.py::test_generate_summary - openai.AuthenticationError: Error code: 401 - {'error': {'message': 'Incorrect API key provided: your-api*****here. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+FAILED tests/test_document_processing.py::test_extract_highlights - openai.AuthenticationError: Error code: 401 - {'error': {'message': 'Incorrect API key provided: your-api*****here. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+FAILED tests/test_file_handler.py::test_handle_upload_pdf - PyPDF2.errors.PdfReadError: EOF marker not found
+FAILED tests/test_file_handler.py::test_handle_upload_doc - zipfile.BadZipFile: File is not a zip file
+FAILED tests/test_file_handler.py::test_handle_upload_invalid - AttributeError: 'NoneType' object has no attribute 'name'
+======================= 7 failed, 5 warnings in 10.84s ========================
