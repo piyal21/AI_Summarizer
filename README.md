@@ -1,5 +1,5 @@
-
 # 🧑‍⚖️ Legal AI Summarizer
+
 # AI Summarizer [ Q & A ]
 
 > A modern platform to simplify legal documents for everyone. Upload, summarize, and interact with your legal files using advanced AI.
@@ -106,7 +106,3 @@ OPENAI_API_KEY=your_openai_api_key_here
 Pull requests and suggestions are welcome! For major changes, please open an issue first.
 
 ---
-
-
-
-
