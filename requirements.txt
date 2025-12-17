@@ -3,6 +3,9 @@ openai
 python-dotenv
 faiss-cpu
 langchain
+langchain-community
+langchain-openai
+langchain-text-splitters
 PyPDF2
 python-docx
 sentence-transformers
